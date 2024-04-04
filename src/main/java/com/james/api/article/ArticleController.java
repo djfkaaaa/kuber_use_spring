@@ -1,6 +1,6 @@
 package com.james.api.article;
 
-import com.james.api.enums.Messenger;
+import com.james.api.common.enums.Messenger;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

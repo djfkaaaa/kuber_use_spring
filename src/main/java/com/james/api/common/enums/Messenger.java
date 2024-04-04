@@ -1,4 +1,4 @@
-package com.james.api.enums;
+package com.james.api.common.enums;
 
 
 public enum Messenger {
