@@ -1,6 +1,7 @@
 package com.james.api.board;
 
 import com.james.api.article.Article;
+import com.james.api.common.BaseEntitiy;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,7 +11,7 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @ToString(exclude = {"id"})
-public class Board {
+public class Board extends BaseEntitiy {
 
     @Id
     @Column(name = "board_id", nullable = false)

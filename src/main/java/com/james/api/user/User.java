@@ -2,6 +2,7 @@ package com.james.api.user;
 
 
 import com.james.api.article.Article;
+import com.james.api.common.BaseEntitiy;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @ToString(exclude = {"id"})
-public class User {
+public class User extends BaseEntitiy {
 
     @Id
     @Column(name = "user_id", nullable = false)
@@ -28,41 +29,21 @@ public class User {
     private String name;
     @Column(name = "phone_number")
     private String phoneNumber;
-    private Long addressId;
     private String job;
-    private Double height;
-    private Double weight;
+
 
     @Builder(builderMethodName = "builder")
     public User(Long id, String username, String password,
                 String name, String phoneNumber,
-                Long addressId, String job,
-                Double height, Double weight) {
+                String job
+                ) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.name = name;
         this.phoneNumber = phoneNumber;
-        this.addressId = addressId;
         this.job = job;
-        this.height = height;
-        this.weight = weight;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
-    @Override
-    public String toString() {
-        return "User{\n" +
-                "id = " + id +
-                ", username = " + username +
-                ", password = " + password +
-                ", name = " + name +
-                ", phoneNumber = " + phoneNumber +
-                ", addressId = " + addressId +
-                ", job = " + job +
-                '}';
-    }
 }

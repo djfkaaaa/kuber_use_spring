@@ -38,8 +38,6 @@ public class UserController {
                 .name((String) paramMap.get("name"))
                 .phoneNumber((String) paramMap.get("phoneNumber"))
                 .job((String) paramMap.get("job"))
-                .height(Double.parseDouble((String) paramMap.get("height")))
-                .weight(Double.parseDouble((String) paramMap.get("weight")))
                 .build());
         System.out.println("db에 저장된 정보 = " + newUser );
         Map<String,Messenger> mapp = new HashMap<>();
@@ -64,20 +62,11 @@ public class UserController {
         return null;
     }
 
-    public Map<String,?>  findAll() throws SQLException {
-        return null;
-    }
-
-
-    public Map<String,?>  findById(@RequestBody Map<String,?> map) {
-        return null;
-    }
-
-    public Map<String,?>  updatePassword(@RequestBody Map<String,?> map){
-        return null;
-    }
-
     public Map<String,?>  delete(@RequestBody Map<String,?> map) {
+        return null;
+    }
+    public Map<String,?>  findAll() throws SQLException {return null;}
+    public Map<String,?>  findById(@RequestBody Map<String,?> map) {
         return null;
     }
 
@@ -89,21 +78,18 @@ public class UserController {
         return null;
     }
 
-    public Map<String, ?> findUsersByNameFromMap(@RequestBody Map<String,?> map) {
-        return null;
-    }
-
     public Map<String,?>  findUsersByJob(@RequestBody Map<String,?> map) {
         return null;
     }
-
-    public Map<String, ?> findUsersByJobFromMap(@RequestBody Map<String,?> map) {
-        return null;
-    }
-
     public String count() {
         return null;
     }
+    public Map<String,?>  updatePassword(@RequestBody Map<String,?> map){
+        return null;
+    }
+
+
+
     public Optional<User> getOne(@RequestBody Map<String,?> map) {
         return null;
     }

@@ -20,20 +20,12 @@ public class ArticleController {
     @GetMapping("/api/all-articles")
     public Map<?,?> findUsers() throws SQLException {
          Map<String, Object> map = new HashMap<>();
-         map.put("message",Messenger.SUCCESS);
-
-         List<?> list = new ArrayList<>();
-//         list.add(Article.builder()
-//                         .id(1L)
-//                         .title("자바")
-//                         .content("자바라")
-//                         .writer("홍성남")
-//                         .registerDate("0327")
-//                 .build());
-         list = service.findAll();
-         list.forEach(System.out::println);
-         System.out.println("리스트 사이즈 : "+list.size());
-         map.put("result",list);
+//         map.put("message",Messenger.SUCCESS);
+//
+//         List<?> list= service.findAll();
+//         list.forEach(System.out::println);
+//         System.out.println("리스트 사이즈 : "+list.size());
+//         map.put("result",list);
          return map;
     }
 }

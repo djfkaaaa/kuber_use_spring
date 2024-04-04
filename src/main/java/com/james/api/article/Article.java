@@ -1,6 +1,7 @@
 package com.james.api.article;
 
 import com.james.api.board.Board;
+import com.james.api.common.BaseEntitiy;
 import com.james.api.user.User;
 import jakarta.jws.soap.SOAPBinding;
 import jakarta.persistence.*;
@@ -11,9 +12,10 @@ import java.util.List;
 @Entity(name = "articles")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
+@AllArgsConstructor
 @ToString(exclude = {"id"})
 
-public class Article {
+public class Article extends BaseEntitiy {
     @Id
     @Column(name = "article_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,15 +32,12 @@ public class Article {
 
     private String title;
     private String content;
-    private String registerDate;
 
 
     @Builder(builderMethodName = "builder")
-    public Article(Long id,String title, String content, User writer , String registerDate) {
+    public Article(Long id,String title, String content) {
         this.id = id;
         this.title = title;
         this.content = content;
-//        this.writer = writer;
-        this.registerDate = registerDate;
     }
 }
