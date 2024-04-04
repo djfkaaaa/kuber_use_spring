@@ -1,13 +1,13 @@
 package com.james.api.user;
 
-import com.james.api.common.enums.Messenger;
+import com.james.api.common.component.MessengerVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.util.*;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*",allowedHeaders = "*")
 @RestController
 @RequiredArgsConstructor
 public class UserController {
@@ -16,16 +16,16 @@ public class UserController {
 
     @PostMapping("/api/login")
     public Map<String,?> login(@RequestBody Map<?,?> paraMap){
-        Map<String, Messenger> resMap = new HashMap<>();
+        Map<String, MessengerVo> resMap = new HashMap<>();
         String username = (String) paraMap.get("username");
         String pw = (String) paraMap.get("password");
         User optUser = repository.findByUsername(username).orElse(null);
         if (optUser == null){
-            resMap.put("message",Messenger.FAIL);
+//            resMap.put("message", MessengerVo.FAIL);
         } else if (!optUser.getPassword().equals(pw)) {
-            resMap.put("message",Messenger.WRONG_PASSWORD);
+//            resMap.put("message", MessengerVo.WRONG_PASSWORD);
         } else {
-            resMap.put("message",Messenger.SUCCESS);
+//            resMap.put("message", MessengerVo.SUCCESS);
         }
         return resMap;
     }
@@ -40,23 +40,24 @@ public class UserController {
                 .job((String) paramMap.get("job"))
                 .build());
         System.out.println("db에 저장된 정보 = " + newUser );
-        Map<String,Messenger> mapp = new HashMap<>();
-        mapp.put("messege",Messenger.SUCCESS);
+        Map<String, MessengerVo> mapp = new HashMap<>();
+//        mapp.put("messege", MessengerVo.SUCCESS);
         return mapp;
     }
 
-    @GetMapping("/api/all-users")
+
+
+    public Map<String,?>  addUsers() {
+        return null;
+    }    @GetMapping("/api/all-users")
     public Map<String, ?> findAllUsers(){
         Map<String, Object> map = new HashMap<>();
-//        map.put("message", Messenger.SUCCESS);
         List<User> list = new ArrayList<>();
         list = repository.findAll();
         map.put("result", list);
         return map;
     }
-    public Map<String,?>  addUsers() {
-        return null;
-    }
+
 
     public Map<String,?>  save(@RequestBody Map<String,?> map) {
         return null;
@@ -96,13 +97,13 @@ public class UserController {
     public Map<String, ?> getUserMap(){
         return null;
     }
-    public Messenger putUsers(@RequestBody Map<String,?> map) throws SQLException {
+    public MessengerVo putUsers(@RequestBody Map<String,?> map) throws SQLException {
         return null;
     }
-    public Messenger createTable() throws SQLException {
+    public MessengerVo createTable() throws SQLException {
         return null;
     }
-    public Messenger deleteTable() throws SQLException {
+    public MessengerVo deleteTable() throws SQLException {
         return null;
     }
 }

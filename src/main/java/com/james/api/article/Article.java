@@ -1,5 +1,6 @@
 package com.james.api.article;
 
+import ch.qos.logback.classic.spi.LoggingEventVO;
 import com.james.api.board.Board;
 import com.james.api.common.BaseEntitiy;
 import com.james.api.user.User;
@@ -32,6 +33,8 @@ public class Article extends BaseEntitiy {
 
     private String title;
     private String content;
+
+
 
 
     @Builder(builderMethodName = "builder")

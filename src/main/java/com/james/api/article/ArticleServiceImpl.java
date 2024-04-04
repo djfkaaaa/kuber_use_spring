@@ -1,7 +1,5 @@
 package com.james.api.article;
 
-import com.james.api.common.AbstractService;
-import com.james.api.common.enums.Messenger;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +11,21 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ArticleServiceImpl implements ArticleService {
 
+    private final ArticleRepository repo;
+
 
     @Override
-    public String save(Object o) {
+    public Article dtoToEntity(ArticleDto dto) {
+        return ArticleService.super.dtoToEntity(dto);
+    }
+
+    @Override
+    public Optional<ArticleDto> entityToDto(Article ent) {
+        return ArticleService.super.entityToDto(ent);
+    }
+
+    @Override
+    public String save(ArticleDto dto) {
         return null;
     }
 
@@ -25,18 +35,20 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public String delete(Object o) {
+    public String delete(ArticleDto dto) {
         return null;
     }
 
     @Override
-    public List findAll() throws SQLException {
+    public List<ArticleDto> findAll() throws SQLException {
         return null;
     }
 
     @Override
-    public Optional findById(Long id) {
-        return Optional.empty();
+    public Optional<ArticleDto> findById(Long id) {
+        Article ent = repo.findById(id).get();
+        Optional<ArticleDto> dto = entityToDto(ent);
+        return Optional.of(dto.orElse(null));
     }
 
     @Override
@@ -45,7 +57,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public Optional getOne(String id) {
+    public Optional<ArticleDto> getOne(String id) {
         return Optional.empty();
     }
 
