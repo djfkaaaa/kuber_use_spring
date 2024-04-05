@@ -1,14 +1,10 @@
 package com.james.api.article;
 
-import ch.qos.logback.classic.spi.LoggingEventVO;
 import com.james.api.board.Board;
 import com.james.api.common.BaseEntitiy;
-import com.james.api.user.User;
-import jakarta.jws.soap.SOAPBinding;
+import com.james.api.user.model.User;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.List;
 
 @Entity(name = "articles")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

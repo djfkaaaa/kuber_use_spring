@@ -1,7 +1,18 @@
 package com.james.api.user;
 
 import com.james.api.common.component.MessengerVo;
+import com.james.api.common.component.PageRequestVo;
+import com.james.api.user.model.User;
+import com.james.api.user.model.UserDto;
+import com.james.api.user.repository.UserRepository;
+import com.james.api.user.service.UserService;
+import com.james.api.user.service.UserServiceImpl;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -10,100 +21,46 @@ import java.util.*;
 @CrossOrigin(origins = "*",allowedHeaders = "*")
 @RestController
 @RequiredArgsConstructor
+@RequestMapping(path = "/api/users")
+@Slf4j
 public class UserController {
-    private final UserService service;
-    private final UserRepository repository;
 
-    @PostMapping("/api/login")
-    public Map<String,?> login(@RequestBody Map<?,?> paraMap){
-        Map<String, MessengerVo> resMap = new HashMap<>();
-        String username = (String) paraMap.get("username");
-        String pw = (String) paraMap.get("password");
-        User optUser = repository.findByUsername(username).orElse(null);
-        if (optUser == null){
-//            resMap.put("message", MessengerVo.FAIL);
-        } else if (!optUser.getPassword().equals(pw)) {
-//            resMap.put("message", MessengerVo.WRONG_PASSWORD);
-        } else {
-//            resMap.put("message", MessengerVo.SUCCESS);
-        }
-        return resMap;
+    private final UserServiceImpl service;
+
+    @GetMapping("/findAll")
+    public ResponseEntity<List<UserDto>> findAll(Pageable pageable){
+        log.info("입력된 정보: {}",pageable);
+        return ResponseEntity.ok(new ArrayList<UserDto>());
     }
 
-    @PostMapping(path = "/api/user")
-    public Map<String, ?> join(@RequestBody Map<String, ?> paramMap){
-       User newUser = repository.save (User.builder()
-                .username((String) paramMap.get("username"))
-                .password((String) paramMap.get("password"))
-                .name((String) paramMap.get("name"))
-                .phoneNumber((String) paramMap.get("phoneNumber"))
-                .job((String) paramMap.get("job"))
-                .build());
-        System.out.println("db에 저장된 정보 = " + newUser );
-        Map<String, MessengerVo> mapp = new HashMap<>();
-//        mapp.put("messege", MessengerVo.SUCCESS);
-        return mapp;
+    @GetMapping("/findById")
+    public ResponseEntity<MessengerVo> findById(PageRequestVo vo){
+        service.findById(0L);
+        return ResponseEntity.ok(new MessengerVo());
+    }
+//Map(String, UserDto)
+    @GetMapping("/count")
+    public ResponseEntity<MessengerVo> count(PageRequestVo vo){
+        service.count();
+        return ResponseEntity.ok(new MessengerVo());
     }
 
-
-
-    public Map<String,?>  addUsers() {
-        return null;
-    }    @GetMapping("/api/all-users")
-    public Map<String, ?> findAllUsers(){
-        Map<String, Object> map = new HashMap<>();
-        List<User> list = new ArrayList<>();
-        list = repository.findAll();
-        map.put("result", list);
-        return map;
+    @GetMapping("/exists/{id}")
+    public ResponseEntity<MessengerVo> existsById(@PathVariable long id){
+        service.existsById(0L);
+        return ResponseEntity.ok(new MessengerVo());
     }
 
-
-    public Map<String,?>  save(@RequestBody Map<String,?> map) {
-        return null;
+    @PostMapping("/save")
+    public ResponseEntity<MessengerVo> save(@RequestBody UserDto param){
+        log.info("입력받은 정보 : {}",param);
+        return ResponseEntity.ok(new MessengerVo());
     }
 
-    public Map<String,?>  delete(@RequestBody Map<String,?> map) {
-        return null;
-    }
-    public Map<String,?>  findAll() throws SQLException {return null;}
-    public Map<String,?>  findById(@RequestBody Map<String,?> map) {
-        return null;
+    @GetMapping("")
+    public ResponseEntity<MessengerVo> deleteById(@PathVariable long id){
+        service.deleteById(0L);
+        return ResponseEntity.ok(new MessengerVo());
     }
 
-    public Map<String,?>  existsById(@RequestBody Map<String,?> map) {
-        return null;
-    }
-
-    public Map<String,?>  findUsersByName(@RequestBody Map<String,?> map) {
-        return null;
-    }
-
-    public Map<String,?>  findUsersByJob(@RequestBody Map<String,?> map) {
-        return null;
-    }
-    public String count() {
-        return null;
-    }
-    public Map<String,?>  updatePassword(@RequestBody Map<String,?> map){
-        return null;
-    }
-
-
-
-    public Optional<User> getOne(@RequestBody Map<String,?> map) {
-        return null;
-    }
-    public Map<String, ?> getUserMap(){
-        return null;
-    }
-    public MessengerVo putUsers(@RequestBody Map<String,?> map) throws SQLException {
-        return null;
-    }
-    public MessengerVo createTable() throws SQLException {
-        return null;
-    }
-    public MessengerVo deleteTable() throws SQLException {
-        return null;
-    }
 }

@@ -1,5 +1,6 @@
 package com.james.api.article;
 
+import com.james.api.common.component.PageRequestVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,55 +16,33 @@ public class ArticleServiceImpl implements ArticleService {
 
 
     @Override
-    public Article dtoToEntity(ArticleDto dto) {
-        return ArticleService.super.dtoToEntity(dto);
-    }
-
-    @Override
-    public Optional<ArticleDto> entityToDto(Article ent) {
-        return ArticleService.super.entityToDto(ent);
-    }
-
-    @Override
-    public String save(ArticleDto dto) {
+    public ArticleDto save(ArticleDto dto) {
         return null;
     }
 
     @Override
-    public String insertMany() {
-        return null;
+    public void deleteById(Long id) {
+
     }
 
     @Override
-    public String delete(ArticleDto dto) {
-        return null;
-    }
-
-    @Override
-    public List<ArticleDto> findAll() throws SQLException {
+    public List<ArticleDto> findAll(PageRequestVo vo) {
         return null;
     }
 
     @Override
     public Optional<ArticleDto> findById(Long id) {
-        Article ent = repo.findById(id).get();
-        Optional<ArticleDto> dto = entityToDto(ent);
-        return Optional.of(dto.orElse(null));
-    }
-
-    @Override
-    public String count() {
-        return null;
-    }
-
-    @Override
-    public Optional<ArticleDto> getOne(String id) {
         return Optional.empty();
     }
 
     @Override
-    public Boolean existsById(Long id) {
-        return null;
+    public long count() {
+        return 0;
+    }
+
+    @Override
+    public boolean existsById(Long id) {
+        return false;
     }
 }
 

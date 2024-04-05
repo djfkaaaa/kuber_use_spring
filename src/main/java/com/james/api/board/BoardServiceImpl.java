@@ -1,27 +1,26 @@
 package com.james.api.board;
 
+import com.james.api.common.component.PageRequestVo;
+
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
 public class BoardServiceImpl implements BoardService {
+
+
     @Override
-    public String save(Object o) {
+    public Object save(Object o) {
         return null;
     }
 
     @Override
-    public String insertMany() {
-        return null;
+    public void deleteById(Long id) {
+
     }
 
     @Override
-    public String delete(Object o) {
-        return null;
-    }
-
-    @Override
-    public List findAll() throws SQLException {
+    public List findAll(PageRequestVo vo) {
         return null;
     }
 
@@ -31,17 +30,12 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public String count() {
-        return null;
+    public long count() {
+        return 0;
     }
 
     @Override
-    public Optional getOne(String id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public Boolean existsById(Long id) {
-        return null;
+    public boolean existsById(Long id) {
+        return false;
     }
 }

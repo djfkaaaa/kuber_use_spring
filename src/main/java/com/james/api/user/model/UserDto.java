@@ -1,4 +1,4 @@
-package com.james.api.user;
+package com.james.api.user.model;
 
 import com.james.api.article.Article;
 import jakarta.persistence.Column;
@@ -26,5 +26,5 @@ public class UserDto {
     private String name;
     private String phoneNumber;
     private String job;
-    private List<Article> article;
+
 }

@@ -1,13 +1,14 @@
 package com.james.api.common.query;
 
+import com.james.api.common.component.PageRequestVo;
+
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
 public interface QueryService<T> {
-    List<T> findAll() throws SQLException;
+    List<T> findAll(PageRequestVo vo);
     Optional<T> findById(Long id);
-    String count();
-    Optional<T> getOne(String id);
-    Boolean existsById(Long id);
+    long count();
+    boolean existsById(Long id);
 }
