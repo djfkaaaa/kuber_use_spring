@@ -2,13 +2,8 @@ package com.james.api.user;
 
 import com.james.api.common.component.MessengerVo;
 import com.james.api.common.component.PageRequestVo;
-import com.james.api.user.model.User;
 import com.james.api.user.model.UserDto;
-import com.james.api.user.repository.UserRepository;
-import com.james.api.user.service.UserService;
 import com.james.api.user.service.UserServiceImpl;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
@@ -57,7 +52,7 @@ public class UserController {
         return ResponseEntity.ok(new MessengerVo());
     }
 
-    @GetMapping("")
+    @GetMapping("/delete")
     public ResponseEntity<MessengerVo> deleteById(@PathVariable long id){
         service.deleteById(0L);
         return ResponseEntity.ok(new MessengerVo());

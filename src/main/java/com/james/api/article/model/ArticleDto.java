@@ -1,4 +1,4 @@
-package com.james.api.article;
+package com.james.api.article.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

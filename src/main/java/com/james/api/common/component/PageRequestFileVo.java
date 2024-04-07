@@ -1,11 +1,10 @@
 package com.james.api.common.component;
 
 
-import com.james.api.article.ArticleDto;
+import com.james.api.article.model.ArticleDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;

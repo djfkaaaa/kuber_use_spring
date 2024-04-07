@@ -1,6 +1,5 @@
 package com.james.api.common.component;
 
-import com.james.api.board.Board;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,7 +1,7 @@
 package com.james.api.user.model;
 
 
-import com.james.api.article.Article;
+import com.james.api.article.model.Article;
 import com.james.api.common.BaseEntitiy;
 import jakarta.persistence.*;
 import lombok.*;
@@ -28,31 +28,16 @@ public class User extends BaseEntitiy {
     private String job;
 
     @OneToMany(mappedBy = "writer", fetch = FetchType.LAZY)
-    private List<Article> article;
+    private List<Article> articles;
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", phoneNumber=" + phoneNumber +
-                ", job='" + job + '\'' +
-                '}' + '\n';
-    }
-//
-//    @Builder(builderMethodName = "builder")
-//    public User(Long id, String username, String password,
-//                String name, String phoneNumber,
-//                String job
-//                ) {
-//        this.id = id;
-//        this.username = username;
-//        this.password = password;
-//        this.name = name;
-//        this.phoneNumber = phoneNumber;
-//        this.job = job;
+//    @Override
+//    public String toString() {
+//        return "User{" +
+//                "username='" + username + '\'' +
+//                ", password='" + password + '\'' +
+//                ", name='" + name + '\'' +
+//                ", phoneNumber=" + phoneNumber +
+//                ", job='" + job + '\'' +
+//                '}' + '\n';
 //    }
-
-
 }
