@@ -3,37 +3,50 @@ package com.james.api.article.service;
 import com.james.api.article.model.ArticleDto;
 import com.james.api.article.repository.ArticleRepository;
 import com.james.api.article.service.ArticleService;
+import com.james.api.common.component.MessengerVo;
 import com.james.api.common.component.PageRequestVo;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Log4j2
 @Service
 @RequiredArgsConstructor
 public class ArticleServiceImpl implements ArticleService {
 
     private final ArticleRepository repo;
 
+
     @Override
-    public ArticleDto save(ArticleDto articleDto) {
-        return entityToDto(Optional.of(repo.save(dtoToEntity(articleDto))));
+    public MessengerVo save(ArticleDto dto) {
+        entityToDto(repo.save(dtoToEntity(dto)));
+        return new MessengerVo();
     }
 
     @Override
-    public void deleteById(Long id) {
+    public MessengerVo deleteById(Long id) {
         repo.deleteById(id);
+        return new MessengerVo();
     }
 
     @Override
-    public List<ArticleDto> findAll(PageRequestVo vo) {
-        return null;
+    public MessengerVo modify(ArticleDto dto) {
+        throw new UnsupportedOperationException("Unimplemented method 'updatePassword'");
+    }
+
+    @Override
+    public List<ArticleDto> findAll() {
+        repo.findAll();
+        return new ArrayList<>();
     }
 
     @Override
     public Optional<ArticleDto> findById(Long id) {
-        return Optional.of(entityToDto(repo.findById(id)));
+        return null;
     }
 
     @Override
@@ -41,10 +54,10 @@ public class ArticleServiceImpl implements ArticleService {
         return repo.count();
     }
 
-    @Override
-    public boolean existsById(Long id) {
-        return repo.existsById(id);
-    }
+//    @Override
+//    public boolean existsById(Long id) {
+//        return repo.existsById(id);
+//    }
 }
 
 

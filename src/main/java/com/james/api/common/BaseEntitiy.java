@@ -6,12 +6,13 @@ import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
 // db에 시간을 입력하기 위한 클래스 (생성일시와 수정일시)
 @MappedSuperclass
-@EntityListeners(value = {})
+@EntityListeners(AuditingEntityListener.class)
 @Getter
 public class BaseEntitiy {
 

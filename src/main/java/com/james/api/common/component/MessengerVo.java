@@ -1,13 +1,11 @@
 package com.james.api.common.component;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.stereotype.Component;
 
 @Component
 @Getter
+@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
