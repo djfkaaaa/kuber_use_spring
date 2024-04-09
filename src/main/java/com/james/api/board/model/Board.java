@@ -19,7 +19,9 @@ public class Board extends BaseEntitiy {
     @Column(name = "board_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "board_name", nullable = false)
     private String boardName;
+    @Column(name = "board_type", nullable = false)
     private String boardType;
 
     @OneToMany(mappedBy = "board")
