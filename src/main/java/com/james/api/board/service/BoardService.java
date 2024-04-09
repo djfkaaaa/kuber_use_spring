@@ -13,9 +13,17 @@ public interface BoardService extends CommandService<BoardDto>, QueryService<Boa
 
     MessengerVo modify(BoardDto dto);
     default Board dtoToEntity(BoardDto dto){
-        return Board.builder().build();
+        return Board.builder()
+                .id(dto.getId())
+                .boardName(dto.getBoardName())
+                .boardType(dto.getBoardType())
+                .build();
     }
     default BoardDto entityToDto(Board board){
-        return BoardDto.builder().build();
+        return BoardDto.builder()
+                .id(board.getId())
+                .boardName(board.getBoardName())
+                .boardType(board.getBoardType())
+                .build();
     }
 }

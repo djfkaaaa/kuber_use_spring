@@ -22,5 +22,7 @@ public class BoardDto {
     private String boardName;
     private String boardType;
     private List<Article> article;
+    private String regDate;
+    private String modDate;
     // ^ list를 default type으로 줌
 }

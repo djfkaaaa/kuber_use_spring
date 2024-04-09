@@ -1,5 +1,6 @@
 package com.james.api.article.model;
 
+import com.sun.jdi.request.StepRequest;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,7 +19,9 @@ public class ArticleDto {
     private Long id;
     private String title;
     private String content;
-    private String registerDate;
+//    private String registerDate;
     private Long writerId;
     private Long boardId;
+    private String regDate;
+    private String modDate;
 }

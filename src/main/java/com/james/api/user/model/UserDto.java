@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
 
@@ -24,5 +25,7 @@ public class UserDto {
     private String phoneNumber;
     private String job;
     private List<Article> articles;
+    private String regDate;
+    private String modDate;
 
 }

@@ -40,8 +40,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public List<ArticleDto> findAll() {
-        repo.findAll();
-        return new ArrayList<>();
+        return repo.findAll().stream().map(i->entityToDto(i)).toList();
     }
 
     @Override

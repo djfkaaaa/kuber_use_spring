@@ -3,6 +3,7 @@ package com.james.api.user;
 import com.james.api.common.component.MessengerVo;
 import com.james.api.common.component.PageRequestVo;
 import com.james.api.user.model.UserDto;
+import com.james.api.user.repository.UserRepository;
 import com.james.api.user.service.UserServiceImpl;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -26,6 +27,7 @@ import java.util.*;
 public class UserController {
 
     private final UserServiceImpl service;
+    private final UserRepository repo;
 
     @SuppressWarnings("static-access")
     @PostMapping("/save")

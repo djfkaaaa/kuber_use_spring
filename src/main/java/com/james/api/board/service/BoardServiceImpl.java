@@ -40,8 +40,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public List<BoardDto> findAll() {
-        repo.findAll();
-        return new ArrayList<>();
+        return repo.findAll().stream().map(i->entityToDto(i)).toList();
     }
 
     @Override

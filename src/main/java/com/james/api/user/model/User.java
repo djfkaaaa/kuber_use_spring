@@ -5,6 +5,7 @@ import com.james.api.article.model.Article;
 import com.james.api.common.BaseEntitiy;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 
@@ -26,9 +27,9 @@ public class User extends BaseEntitiy {
     @Column(name = "phone_number")
     private String phoneNumber;
     private String job;
-
     @OneToMany(mappedBy = "writer", fetch = FetchType.LAZY)
     private List<Article> articles;
+
 
 //    @Builder(builderMethodName = "builder")
 //    public User(Long id,String username,String password, String name, String phoneNumber, String job){

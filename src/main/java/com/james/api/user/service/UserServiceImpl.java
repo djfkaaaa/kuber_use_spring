@@ -34,9 +34,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDto> findAll() {
-        repo.findAll();
-        return new ArrayList<>();
+        return repo.findAll().stream().map(i->entityToDto(i)).toList();
     }
+    //stream안에 있는 map method
 
     @Override
     public Optional<UserDto> findById(Long id) {
