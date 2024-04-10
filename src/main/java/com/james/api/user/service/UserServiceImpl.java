@@ -39,9 +39,7 @@ public class UserServiceImpl implements UserService {
     //stream안에 있는 map method
 
     @Override
-    public Optional<UserDto> findById(Long id) {
-        return null;
-    }
+    public Optional<UserDto> findById(Long id) {return repo.findById(id).map(i->entityToDto(i));}
 
     @Override
     public long count() {
