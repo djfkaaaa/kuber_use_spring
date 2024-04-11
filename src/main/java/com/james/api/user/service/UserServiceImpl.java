@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public MessengerVo deleteById(Long id) {
-        repo.deleteById(id);
+
         return new MessengerVo();
     }
 
@@ -42,18 +42,17 @@ public class UserServiceImpl implements UserService {
     public Optional<UserDto> findById(Long id) {return repo.findById(id).map(i->entityToDto(i));}
 
     @Override
-    public long count() {
-        return repo.count();
+    public MessengerVo modify(UserDto dto) {
+//        throw new UnsupportedOperationException("Unimplemented method 'updatePassword'");
+        repo.save(dtoToEntity(dto));
+        return MessengerVo.builder()
+                .message("success")
+                .build();
     }
 
-//    @Override
-//    public boolean existsById(Long id) {
-//        return repo.existsById(id);
-//    }
-
     @Override
-    public MessengerVo modify(UserDto dto) {
-        throw new UnsupportedOperationException("Unimplemented method 'updatePassword'");
+    public long count() {
+        return repo.count();
     }
 
     @Override

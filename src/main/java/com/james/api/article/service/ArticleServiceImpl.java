@@ -45,7 +45,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public Optional<ArticleDto> findById(Long id) {
-        return null;
+        return repo.findById(id).map(i->entityToDto(i));
     }
 
     @Override
