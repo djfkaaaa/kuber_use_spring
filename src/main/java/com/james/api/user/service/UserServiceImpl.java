@@ -23,7 +23,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public MessengerVo save(UserDto dto) {
         entityToDto(repo.save(dtoToEntity(dto)));
-        return new MessengerVo();
+        return MessengerVo.builder()
+                .message("Success")
+                .build();
+
     }
 
     @Override
@@ -51,7 +54,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public long count() {
+    public Long count() {
         return repo.count();
     }
 

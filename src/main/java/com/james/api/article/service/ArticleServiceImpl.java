@@ -49,7 +49,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public long count() {
+    public Long count() {
         return repo.count();
     }
 
